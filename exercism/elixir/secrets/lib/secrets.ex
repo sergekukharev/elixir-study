@@ -1,29 +1,33 @@
 defmodule Secrets do
+  require Integer
+
   def secret_add(secret) do
-    # Please implement the secret_add/1 function
+    fn another ->
+      secret + another
+    end
   end
 
-  def secret_subtract(secret) do
-    # Please implement the secret_subtract/1 function
-  end
+  def secret_subtract(secret), do: &(&1 - secret)
 
-  def secret_multiply(secret) do
-    # Please implement the secret_multiply/1 function
-  end
+  def secret_multiply(secret), do: &(secret * &1)
 
-  def secret_divide(secret) do
-    # Please implement the secret_divide/1 function
-  end
+  def secret_divide(secret), do: &(div(&1, secret))
 
   def secret_and(secret) do
-    # Please implement the secret_and/1 function
+    fn another ->
+      Bitwise.band(another, secret)
+    end
   end
 
   def secret_xor(secret) do
-    # Please implement the secret_xor/1 function
+    fn another ->
+      Bitwise.bxor(another, secret)
+    end
   end
 
   def secret_combine(secret_function1, secret_function2) do
-    # Please implement the secret_combine/2 function
+    fn value ->
+      secret_function1.(value) |> secret_function2.()
+    end
   end
 end
