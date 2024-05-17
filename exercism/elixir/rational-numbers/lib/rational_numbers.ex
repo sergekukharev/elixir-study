@@ -6,6 +6,42 @@ defmodule RationalNumbers do
   """
   @spec add(a :: rational, b :: rational) :: rational
   def add(a, b) do
+    {elem(a, 0) * elem(b, 1) + elem(b, 0) * elem(a, 1), elem(a, 1) * elem(b, 1)}
+      |> reduce()
+  end
+
+  @doc """
+  Reduce a rational number to its lowest terms
+  """
+  @spec reduce(a :: rational) :: rational
+  def reduce(a) do
+    gcd = getGCD(a)
+
+    {div(elem(a, 0), gcd), div(elem(a, 1), gcd)} |> normalize()
+  end
+
+  @spec reduce(a :: rational) :: rational
+  def normalize({a, b}) when b < 0 do
+    {a * -1, b * -1}
+  end
+  def normalize(a), do: a
+
+  @spec getGCD(num :: rational) :: integer
+  defp getGCD(num) do
+    first = elem(num, 0)
+    second = elem(num, 1)
+    getGCD(first, second)
+  end
+
+  @spec getGCD(0, second :: integer) :: integer
+  defp getGCD(0, second), do: second
+
+  @spec getGCD(first :: integer, 0) :: integer
+  defp getGCD(first, 0), do: first
+
+  @spec getGCD(first :: integer, second :: integer) :: integer
+  defp getGCD(first, second) do
+    getGCD(second, rem(first, second))
   end
 
   @doc """
@@ -48,12 +84,5 @@ defmodule RationalNumbers do
   """
   @spec pow_real(x :: integer, n :: rational) :: float
   def pow_real(x, n) do
-  end
-
-  @doc """
-  Reduce a rational number to its lowest terms
-  """
-  @spec reduce(a :: rational) :: rational
-  def reduce(a) do
   end
 end
