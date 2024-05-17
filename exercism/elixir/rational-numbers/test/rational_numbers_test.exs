@@ -132,47 +132,47 @@ defmodule RationalNumbersTest do
   end
 
   describe "Exponentiation of a rational number" do
-    @tag :pending
+    # @tag :pending
     test "Raise a positive rational number to a positive integer power" do
       assert RationalNumbers.pow_rational({1, 2}, 3) == {1, 8}
     end
 
-    @tag :pending
+    # @tag :pending
     test "Raise a negative rational number to a positive integer power" do
       assert RationalNumbers.pow_rational({-1, 2}, 3) == {-1, 8}
     end
 
-    @tag :pending
+    # @tag :pending
     test "Raise a positive rational number to a negative integer power" do
       assert RationalNumbers.pow_rational({3, 5}, -2) == {25, 9}
     end
 
-    @tag :pending
+    # @tag :pending
     test "Raise a negative rational number to an even negative integer power" do
       assert RationalNumbers.pow_rational({-3, 5}, -2) == {25, 9}
     end
 
-    @tag :pending
+    # @tag :pending
     test "Raise a negative rational number to an odd negative integer power" do
       assert RationalNumbers.pow_rational({-3, 5}, -3) == {-125, 27}
     end
 
-    @tag :pending
+    # @tag :pending
     test "Raise zero to an integer power" do
       assert RationalNumbers.pow_rational({0, 1}, 5) == {0, 1}
     end
 
-    @tag :pending
+    # @tag :pending
     test "Raise one to an integer power" do
       assert RationalNumbers.pow_rational({1, 1}, 4) == {1, 1}
     end
 
-    @tag :pending
+    # @tag :pending
     test "Raise a positive rational number to the power of zero" do
       assert RationalNumbers.pow_rational({1, 2}, 0) == {1, 1}
     end
 
-    @tag :pending
+    # @tag :pending
     test "Raise a negative rational number to the power of zero" do
       assert RationalNumbers.pow_rational({-1, 2}, 0) == {1, 1}
     end

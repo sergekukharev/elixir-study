@@ -56,14 +56,24 @@ defmodule RationalNumbers do
   """
   @spec abs(a :: rational) :: rational
   def abs({a0, a1}) do
-    {Kernel.abs(a0), Kernel.abs(a1)}
+    {Kernel.abs(a0), Kernel.abs(a1)} |> reduce()
   end
 
   @doc """
   Exponentiation of a rational number by an integer
   """
   @spec pow_rational(a :: rational, n :: integer) :: rational
-  def pow_rational(a, n) do
+  def pow_rational({a0, a1}, n) when n == 0, do: {1, 1}
+  def pow_rational({a0, a1}, n) when n < 0 do
+    {pow_integer(a1, -n), pow_integer(a0, -n)} |> reduce()
+  end
+  def pow_rational({a0, a1}, n) do
+    {pow_integer(a0, n), pow_integer(a1, n)} |> reduce()
+  end
+
+  defp pow_integer(a, 1), do: a
+  defp pow_integer(a, n) do
+    a * pow_integer(a, n - 1)
   end
 
   @doc """
