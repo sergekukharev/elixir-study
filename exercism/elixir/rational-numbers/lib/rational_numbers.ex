@@ -20,7 +20,7 @@ defmodule RationalNumbers do
   end
 
   @spec reduce(a :: rational) :: rational
-  defp normalize({a, b}) when b < 0, do: {a * -1, b * -1}
+  defp normalize({a, b}) when b < 0, do: {-a, -b}
   defp normalize(a), do: a
 
   defp getGCD(0, second), do: second
@@ -64,17 +64,13 @@ defmodule RationalNumbers do
   """
   @spec pow_rational(a :: rational, n :: integer) :: rational
   def pow_rational({a0, a1}, n) when n == 0, do: {1, 1}
-  def pow_rational({a0, a1}, n) when n < 0 do
-    {pow_integer(a1, -n), pow_integer(a0, -n)} |> reduce()
-  end
+  def pow_rational({a0, a1}, n) when n < 0, do: pow_rational({a1, a0}, -n)
   def pow_rational({a0, a1}, n) do
     {pow_integer(a0, n), pow_integer(a1, n)} |> reduce()
   end
 
   defp pow_integer(a, 1), do: a
-  defp pow_integer(a, n) do
-    a * pow_integer(a, n - 1)
-  end
+  defp pow_integer(a, n), do: a * pow_integer(a, n - 1)
 
   @doc """
   Exponentiation of a real number by a rational number
