@@ -63,7 +63,7 @@ defmodule RationalNumbers do
   Exponentiation of a rational number by an integer
   """
   @spec pow_rational(a :: rational, n :: integer) :: rational
-  def pow_rational({a0, a1}, n) when n == 0, do: {1, 1}
+  def pow_rational({_, _}, n) when n == 0, do: {1, 1}
   def pow_rational({a0, a1}, n) when n < 0, do: pow_rational({a1, a0}, -n)
   def pow_rational({a0, a1}, n) do
     {pow_integer(a0, n), pow_integer(a1, n)} |> reduce()
