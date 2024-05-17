@@ -39,7 +39,8 @@ defmodule RationalNumbers do
   Multiply two rational numbers
   """
   @spec multiply(a :: rational, b :: rational) :: rational
-  def multiply(a, b) do
+  def multiply({a0, a1}, {b0, b1}) do
+    {a0 * b0, a1 * b1} |> reduce()
   end
 
   @doc """
