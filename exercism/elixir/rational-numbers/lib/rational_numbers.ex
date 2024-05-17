@@ -31,7 +31,8 @@ defmodule RationalNumbers do
   Subtract two rational numbers
   """
   @spec subtract(a :: rational, b :: rational) :: rational
-  def subtract(a, b) do
+  def subtract({a0, a1}, {b0, b1}) do
+    {a0 * b1 - b0 * a1, a1 * b1} |> reduce()
   end
 
   @doc """
