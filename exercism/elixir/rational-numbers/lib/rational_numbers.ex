@@ -55,7 +55,8 @@ defmodule RationalNumbers do
   Absolute value of a rational number
   """
   @spec abs(a :: rational) :: rational
-  def abs(a) do
+  def abs({a0, a1}) do
+    {Kernel.abs(a0), Kernel.abs(a1)}
   end
 
   @doc """
