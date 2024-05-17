@@ -47,7 +47,8 @@ defmodule RationalNumbers do
   Divide two rational numbers
   """
   @spec divide_by(num :: rational, den :: rational) :: rational
-  def divide_by(num, den) do
+  def divide_by({num0, num1}, {div0, div1}) do
+    {num0 * div1, num1 * div0} |> reduce()
   end
 
   @doc """
