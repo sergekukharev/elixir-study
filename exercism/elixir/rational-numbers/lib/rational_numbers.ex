@@ -14,7 +14,7 @@ defmodule RationalNumbers do
   """
   @spec reduce(a :: rational) :: rational
   def reduce({a0, a1}) do
-    gcd = getGCD(a0, a1)
+    gcd = get_gcd(a0, a1)
 
     {div(a0, gcd), div(a1, gcd)} |> normalize()
   end
@@ -23,9 +23,9 @@ defmodule RationalNumbers do
   defp normalize({a, b}) when b < 0, do: {-a, -b}
   defp normalize(a), do: a
 
-  defp getGCD(0, second), do: second
-  defp getGCD(first, 0), do: first
-  defp getGCD(first, second), do: getGCD(second, rem(first, second))
+  defp get_gcd(0, second), do: second
+  defp get_gcd(first, 0), do: first
+  defp get_gcd(first, second), do: get_gcd(second, rem(first, second))
 
   @doc """
   Subtract two rational numbers
