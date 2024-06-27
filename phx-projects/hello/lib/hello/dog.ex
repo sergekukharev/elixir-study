@@ -14,5 +14,6 @@ defmodule Hello.Dog do
     dog
     |> cast(attrs, [:name, :age])
     |> validate_required([:name, :age])
+    |> validate_length(:name, min: 3)
   end
 end
