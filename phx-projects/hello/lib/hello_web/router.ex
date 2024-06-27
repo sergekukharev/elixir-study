@@ -7,6 +7,8 @@ defmodule HelloWeb.Router do
 
   scope "/api", HelloWeb do
     pipe_through :api
+
+    resources "/dogs", DogController
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
