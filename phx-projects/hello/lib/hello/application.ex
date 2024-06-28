@@ -20,6 +20,10 @@ defmodule Hello.Application do
       HelloWeb.Endpoint
     ]
 
+    :opentelemetry_cowboy.setup()
+    OpentelemetryPhoenix.setup(adapter: :cowboy2)
+    OpentelemetryEcto.setup([:hello, :repo])
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Hello.Supervisor]
