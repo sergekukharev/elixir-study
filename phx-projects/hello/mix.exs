@@ -50,6 +50,7 @@ defmodule Hello.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.0"},
+      {:dotenvy, "~> 0.8.0"},
       # OTel
       {:opentelemetry, "~> 1.3"},
       {:opentelemetry_api, "~> 1.2"},
