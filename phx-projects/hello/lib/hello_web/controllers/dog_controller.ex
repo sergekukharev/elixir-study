@@ -2,6 +2,10 @@ defmodule HelloWeb.DogController do
   use HelloWeb, :controller
 
   def index(conn, _) do
+    # Call `downstream` service
+    {:ok, result} = Tesla.get "http://localhost:4004/api/dogs"
+    IO.puts("Called `downstream` service with #{result.status} response")
+
     json(conn, [Hello.Repo.all(Hello.Dog)])
   end
 

@@ -51,13 +51,15 @@ defmodule Hello.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.0"},
       {:dotenvy, "~> 0.8.0"},
+      {:tesla, "~> 1.11.0"},
       # OTel
       {:opentelemetry, "~> 1.3"},
       {:opentelemetry_api, "~> 1.2"},
       {:opentelemetry_exporter, "~> 1.6"},
       {:opentelemetry_phoenix, "~> 1.1"},
       {:opentelemetry_cowboy, "~> 0.2"},
-      {:opentelemetry_ecto, "~> 1.2"}
+      {:opentelemetry_ecto, "~> 1.2"},
+      {:open_telemetry_decorator, "~> 1.5"}
     ]
   end
 
